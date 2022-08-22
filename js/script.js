@@ -14,3 +14,24 @@ const spanParagraph = document.querySelector("p span");
 const guessMessage = document.querySelector(".message");
 //hidden button that will appear prompting the player to play again.
 const playAgainButton = document.querySelector(".play-again");
+//test word until I fetch words from hosted file
+const word = "magnolia";
+
+//placeholder for each letter
+const placeHolder = function () {
+    //Create and name a function to update the paragraph’s innerText for the “words-in-progress” element with circle symbols (●) to represent each letter in the word. 
+    //You’ll need to use an array and then join it back to a string using the .join("") method
+    const placeHolderLetter = [];
+    for(const letter of word){
+        //shows the value magnolia in the console.log
+        //console.log(letter);
+        //adding to the string of magnolia
+        placeHolderLetter.push("●");
+    }
+    //joining the in progress text to the new placeholder letter array
+    inProgress.innerText = placeHolderLetter.join("");
+}
+//Call the function and pass it the word variable
+placeHolder(word);
+
+//adding an event listener for the button
