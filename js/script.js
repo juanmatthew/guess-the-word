@@ -1,5 +1,5 @@
 //unordered list where the player’s guessed letters will appear
-const guessedLetter = document.querySelector(".guessed-letters");
+const guessedLetterList = document.querySelector(".guessed-letters");
 // button with the text “Guess!” in it.
 const guessButton = document.querySelector(".guess");
 //text input where the player will guess a letter.
@@ -16,6 +16,9 @@ const guessMessage = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
 //test word until I fetch words from hosted file
 const word = "magnolia";
+
+//create another global variable called guessedLetters with an empty array. This array will contain all the letters the player guesses
+const guessedLetters = [];
 
 //placeholder for each letter
 const placeHolder = function () {
@@ -42,15 +45,21 @@ guessButton.addEventListener("click", function (e) {
     const letterInput = textInput.value;
     //Log out the value of the variable capturing the input
     console.log(letterInput);
-    //Then, empty the value of the input, You should see the letter you enter into the input field in the console when the Guess button is clicked. 
-    textInput.value = "";
-
+    
     //empty the text of the guess message element.
     guessMessage.innerText = "";
 
     //call the function you made that checks the input, originally i just put validateInput(),and pass it the input value created above, letterInput, as an argument
     //Save the result of this function call to a variable by placing it as the value of a new variable you create
     const goodResult = validateInput(letterInput);
+    //*Make sure that the variable mapped to the result of the function validates that the player’s input is returning a letter (as opposed to “undefined”)*
+
+    if (goodResult){
+        //If it’s returning a letter, pass it as an argument to your makeGuess function
+        makeGuess(letterInput);
+    }
+    //Then, empty the value of the input, You should see the letter you enter into the input field in the console when the Guess button is clicked. 
+    textInput.value = "";
 });
 
 //Create a Function to Check Player’s Input
@@ -70,4 +79,18 @@ const validateInput = function (input) {
     } else {
         return input;
     }
-}
+};
+
+//Create a Function to Capture Input
+const makeGuess = function (letterInput) {
+    //JavaScript is case sensitive, so it sees uppercase and lowercase letters as different characters. The easiest way to handle case-sensitivity is to convert all letters to one casing. We recommend converting your letter parameter to uppercase
+    letterInput = letterInput.toUpperCase();
+    //If the player already guessed the same letter, update the message to inform the player try again
+    if (guessedLetters.includes(letterInput)){
+        guessMessage.innerText = "You've already guessed this letter. Please try again, friend!";
+    } else {
+        //If they haven’t guessed that letter before, add the letter to the guessedLetters array by using the push() method
+        guessedLetters.push(letterInput);
+        console.log(guessedLetters);
+    }
+};
