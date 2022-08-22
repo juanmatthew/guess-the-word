@@ -35,3 +35,13 @@ const placeHolder = function () {
 placeHolder(word);
 
 //adding an event listener for the button
+guessButton.addEventListener("click", function (e) {
+    //Because you’re working with a form, you want to prevent the default behavior of clicking a button, the form submitting, and then reloading the page. To prevent this reloading behavior, add this line of code at the top of the callback function
+    e.preventDefault();
+    //Create and name a variable to capture the value of the input
+    const input = textInput.value;
+    //Log out the value of the variable capturing the input
+    console.log(input);
+    //Then, empty the value of the input, You should see the letter you enter into the input field in the console when the Guess button is clicked. 
+    textInput.value = "";
+});
