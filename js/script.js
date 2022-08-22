@@ -44,16 +44,29 @@ guessButton.addEventListener("click", function (e) {
     console.log(letterInput);
     //Then, empty the value of the input, You should see the letter you enter into the input field in the console when the Guess button is clicked. 
     textInput.value = "";
+
+    //empty the text of the guess message element.
+    guessMessage.innerText = "";
+
+    //call the function you made that checks the input, originally i just put validateInput(),and pass it the input value created above, letterInput, as an argument
+    //Save the result of this function call to a variable by placing it as the value of a new variable you create
+    const goodResult = validateInput(letterInput);
 });
 
+//Create a Function to Check Player’s Input
 const validateInput = function (input) {
+    //create a variable for the accepted letter sequence: const acceptedLetter = /[a-zA-Z]/. Now your code uses a regular expression to ensure the player inputs a letter
     const acceptedLetter = /[a-zA-Z]/;
+    //First, check if the input is empty
     if (input === ""){
-        guessMessage.innerText = `Please Enter One Letter`;
+        guessMessage.innerText = `Please Enter A Letter`;
+        //Then, check if the player has entered more than one letter
     } else if (input > 1){
-        guessMessage.innerText = `Please Enter One Letter`;
+        guessMessage.innerText = `Please Enter One Letter At A Time. No numbers or symbols.`;
+        //check if they’ve entered a character that doesn’t match the regular expression pattern by using .match()
     } else if (!input.match(acceptedLetter)){
         guessMessage.innerText = `Must enter a letter only. No numbers or symbols.`;
+        //If all the other conditions aren’t met, the input is a letter, which is what you’re looking for! Return the input.
     } else {
         return input;
     }
