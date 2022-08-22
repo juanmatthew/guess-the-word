@@ -92,5 +92,22 @@ const makeGuess = function (letterInput) {
         //If they haven’t guessed that letter before, add the letter to the guessedLetters array by using the push() method
         guessedLetters.push(letterInput);
         console.log(guessedLetters);
+        //inside the else statement in makeGuess 
+        updatedGuessedLetters();
     }
+};
+
+//Create a Function to Show the Guessed Letters
+//Create and name a function to update the page with the letters the player guesses
+const updatedGuessedLetters = function () {
+    //Empty the innerHTML of the unordered list where the player’s guessed letters will display using the variable created at the beginning not the inputs
+  guessedLetterList.innerHTML = ""; 
+  //Create a new list item for each letter inside your guessedLetters array 
+  for (const letter of guessedLetters) {
+    const li = document.createElement("li");
+    //needed to add the below in order for the letters to appear
+    li.innerText = letter;
+    //add it to the unordered list
+    guessedLetterList.append(li);
+  }
 };
