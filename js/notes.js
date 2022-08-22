@@ -94,7 +94,7 @@ const makeGuess = function (letterInput) {
         console.log(guessedLetters);
         //inside the else statement in makeGuess 
         updatedGuessedLetters();
-        //needed to add the guessedLetters in order for the letters to show in the dot area
+        //needed to pass the guessedLetters as an argument in order for the letters to show in the dot area
         updateWordProgress(guessedLetters);
     }
 };
