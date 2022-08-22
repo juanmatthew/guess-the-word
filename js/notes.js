@@ -133,4 +133,18 @@ const updateWordProgress = function (guessedLetters) {
     }
     // use join() to join the empty paragraph with class word-in-progress with the new created showWord array to update where the word in progress will appear
     inProgress.innerText = showWord.join("");
+    //At the bottom of the function that updates the word in progress, call this function to check if the player has won
+    guessCheckWin();
 };
+
+//Create a Function to Check If the Player Won
+//Create a function to check if the player successfully guessed the word and won
+const guessCheckWin = function () {
+    //verifying if their word in progress matches the word they should guess
+    if (word.toUpperCase() === inProgress.innerText)  {
+        //If the player has won, add the “win” class to the empty guessMesage paragraph where messages appear when they guess the letter
+      guessMessage.classList.add("win");
+      //update the paragraph’s contents
+      guessMessage.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;
+    }
+  };

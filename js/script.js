@@ -85,4 +85,13 @@ const updateWordProgress = function (guessedLetters) {
         }
     }
     inProgress.innerText = showWord.join("");
+    guessCheckWin();
+};
+
+//Create a Function to Check If the Player Won
+const guessCheckWin = function () {
+  if (word.toUpperCase() === inProgress.innerText)  {
+    guessMessage.classList.add("win");
+    guessMessage.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;
+  }
 };
