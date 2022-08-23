@@ -25,7 +25,8 @@ let word = "magnolia";
 let remainingGuesses = 8;
 
 //create another global variable called guessedLetters with an empty array. This array will contain all the letters the player guesses
-const guessedLetters = [];
+let guessedLetters = [];
+//changing this from const to let allowed for the correct word to disappear
 
 const getWord = async function () {
     const wordData = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
@@ -179,7 +180,9 @@ const guessRemaining = function (guess) {
 
     if (remainingGuesses === 0){
         //If they have no guesses remaining, update the message to say the game is over and what the word is.
-        guessMessage.innerText = `You have no more guesses,Friend! The word was ✨${word.toUpperCase()}✨ Game Over!👾 `
+        guessMessage.innerText = `You have no more guesses,Friend! The word was ✨${word.toUpperCase()}✨ Game Over!👾 `;
+        //forgot to call the startOver function in the guessremaining function
+        startOver();
     } else if (remainingGuesses === 1){
         //If they have 1 guess, update the span inside the paragraph where the remaining guesses will display to tell the player they have one guess remaining
         guessSpanParagraph.innerText = `${remainingGuesses} guess`;
