@@ -115,7 +115,7 @@ const guessRemaining = function (letterInput) {
     }
 
     if (remainingGuesses === 0){
-        guessMessage.innerText = `You have no more guesses,Friend! The word was ✨${word.toUpperCase()}✨ Game Over!👾 `;
+        guessMessage.innerText = `You have no more guesses,Friend!  The word was ✨${word.toUpperCase()}✨ Game Over!👾 `;
     } else if (remainingGuesses === 1){
         guessSpanParagraph.innerText = `${remainingGuesses} guess`;
     } else {
@@ -138,6 +138,22 @@ const startOver = function () {
   guessButton.classList.add("hide");  
   remainingGuess.classList.add("hide");
   guessedLetterList.classList.add("hide");
-  //Use the startOver function to show the button to play again.
   playAgainButton.classList.remove("hide");
 };
+
+playAgainButton.addEventListener("click", function () {
+   guessMessage.classList.remove("win");
+   guessMessage.innerText="";
+   guessedLetterList.innerHTML = "";
+   remainingGuesses = 8;
+   guessedLetters = [];
+   guessSpanParagraph.innerText = `${remainingGuesses} guesses`;
+
+   getWord();
+   guessButton.classList.remove("hide");  
+   remainingGuess.classList.remove("hide");
+   guessedLetterList.classList.remove("hide");
+   playAgainButton.classList.add("hide");
+
+   
+});

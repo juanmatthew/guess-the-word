@@ -199,6 +199,37 @@ const guessCheckWin = function () {
       guessMessage.classList.add("win");
       //update the paragraph’s contents
       guessMessage.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;
+
+
+      startOver();
     }
 };
 
+const startOver = function () {
+    guessButton.classList.add("hide");  
+    remainingGuess.classList.add("hide");
+    guessedLetterList.classList.add("hide");
+    //Use the startOver function to show the button to play again.
+    playAgainButton.classList.remove("hide");
+};
+
+playAgainButton.addEventListener("click", function () {
+    guessMessage.classList.remove("win");
+    //Empty the message text and the unordered list where the guessed letters appear
+    guessMessage.innerText="";
+    guessedLetterList.innerHTML = "";
+    remainingGuesses = 8;
+    //Set your guessedLetter global variable back to an empty array
+    guessedLetters = [];
+    //Populate the text of the span inside the paragraph where the remaining guesses display with the new amount of guesses
+    guessSpanParagraph.innerText = `${remainingGuesses} guesses`;
+ 
+    getWord();
+    //Show the Guess button, the paragraph with remaining guesses, and the guessed letters once more. Hide the Play Again button
+    guessButton.classList.remove("hide");  
+    remainingGuess.classList.remove("hide");
+    guessedLetterList.classList.remove("hide");
+    playAgainButton.classList.add("hide");
+ 
+    
+});
