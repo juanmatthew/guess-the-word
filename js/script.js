@@ -129,5 +129,15 @@ const guessCheckWin = function () {
   if (word.toUpperCase() === inProgress.innerText)  {
     guessMessage.classList.add("win");
     guessMessage.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;
+
+    startOver();
   }
+};
+
+const startOver = function () {
+  guessButton.classList.add("hide");  
+  remainingGuess.classList.add("hide");
+  guessedLetterList.classList.add("hide");
+  //Use the startOver function to show the button to play again.
+  playAgainButton.classList.remove("hide");
 };
