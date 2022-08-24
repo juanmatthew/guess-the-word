@@ -115,7 +115,7 @@ const guessRemaining = function (letterInput) {
     }
 
     if (remainingGuesses === 0){
-        guessMessage.innerText = `You have no more guesses,Friend!  The word was ✨${word.toUpperCase()}✨ Game Over!👾 `;
+        guessMessage.innerText = `You have no more guesses, Friend!  The word was ✨${word.toUpperCase()}✨ Game Over!👾 `;
         startOver();
     } else if (remainingGuesses === 1){
         guessSpanParagraph.innerText = `${remainingGuesses} guess`;
